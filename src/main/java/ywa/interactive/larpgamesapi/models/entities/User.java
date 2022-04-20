@@ -20,7 +20,7 @@ import java.util.Set;
 public class User implements UserDetails {
     @Id
     @GeneratedValue
-    private Long id; //identificador autonumèric
+    private String id; //identificador autonumèric
 
     @Column(unique = true)
     private String username; //no es repeteix username
