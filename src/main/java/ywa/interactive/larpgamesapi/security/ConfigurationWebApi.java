@@ -7,19 +7,5 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class ConfigurationWebApi {
-    @Bean
-    public WebMvcConfigurer corsConfigurer(){
-        return new WebMvcConfigurer() {
 
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/usuaris/**")
-                        //.allowedOrigins("http://localhost:9001")
-                        .allowedOrigins("*")
-                        .allowedMethods("GET", "POST", "PUT", "DELETE")
-                        .maxAge(3600);
-            }
-
-        };
-    }
 }
