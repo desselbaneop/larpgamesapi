@@ -5,7 +5,7 @@ import ywa.interactive.larpgamesapi.models.entities.Game;
 
 import java.util.List;
 
-public interface RepositoryGames extends JpaRepository<Game, Integer> {
+public interface GamesRepository extends JpaRepository<Game, Integer> {
     List<Game> findByCountry(String country);
 
     long countByCountry(String country);

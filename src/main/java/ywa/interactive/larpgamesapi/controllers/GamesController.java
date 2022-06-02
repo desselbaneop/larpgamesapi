@@ -28,7 +28,25 @@ public class GamesController {
         else return ResponseEntity.ok(res);
     }
 
-    @GetMapping("/games/country/{country}")
+    @PostMapping("/games")
+    public ResponseEntity<?> createGame(@RequestBody Game game) {
+        Game res = serviceGames.addGame(game);
+        return new ResponseEntity<>(res, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/games")
+    public ResponseEntity<?> updateGame(@RequestBody Game game){
+        Game res = serviceGames.modGame(game);
+        return new ResponseEntity<>(res, HttpStatus.ACCEPTED);
+    }
+
+    @DeleteMapping("/games")
+    public ResponseEntity<?> deleteGame(@RequestBody Game game){
+        Game res = serviceGames.deleteGame(game);
+        return new ResponseEntity<>(res, HttpStatus.ACCEPTED);
+    }
+
+    @GetMapping("/games/countries/{country}")
     public ResponseEntity<?> getGamesByCountry(@PathVariable String country){
         List<Game> gamesByCounty = serviceGames.listGamesByCountry(country);
         if (gamesByCounty == null){
@@ -37,13 +55,5 @@ public class GamesController {
             return ResponseEntity.ok(gamesByCounty);
         }
     }
-
-    @PostMapping("/games")
-    public ResponseEntity<?> createGame(@RequestBody Game game) {
-        System.out.println(game);
-        Game res = serviceGames.addGame(game);
-        return new ResponseEntity<>(res, HttpStatus.CREATED);
-    }
-
 
 }
