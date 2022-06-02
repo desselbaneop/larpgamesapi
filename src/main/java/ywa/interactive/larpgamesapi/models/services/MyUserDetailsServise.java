@@ -16,4 +16,8 @@ public class MyUserDetailsServise implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userService.checkUserByUsername(username);
     }
+
+    public UserDetails loadUserById(Long id){
+        return userService.checkUserById(id);
+    }
 }

@@ -1,8 +1,9 @@
-package ywa.interactive.larpgamesapi.security;
+package ywa.interactive.larpgamesapi.security.JWT;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 
@@ -14,19 +15,13 @@ import java.io.PrintWriter;
 
 @Component
 @RequiredArgsConstructor
-public class MyAuthEntryPoint extends BasicAuthenticationEntryPoint{
+public class MyAuthEntryPoint implements AuthenticationEntryPoint {
 
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException {
-        response.addHeader("WWW-Authenticate", "Basic realm=\\" + getRealmName() + "\\");
         response.setContentType("application/json");
         response.setStatus(HttpStatus.UNAUTHORIZED.value());
         PrintWriter writer = response.getWriter();
-        writer.println("No authorized access");
-    }
-
-    @PostConstruct
-    public void initRealmname() {
-        setRealmName("larpgames.ywa");
+        writer.println("Not authorized access for entry point");
     }
 }
