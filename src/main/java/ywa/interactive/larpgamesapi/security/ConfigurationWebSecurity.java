@@ -63,10 +63,10 @@ public class ConfigurationWebSecurity extends WebSecurityConfigurerAdapter {
                 // .antMatchers(HttpMethod.GET,"/login").permitAll()
                 //.antMatchers(HttpMethod.GET, "/me/**").hasRole("ADMIN") //per fer proves del forbidden
                 .antMatchers(HttpMethod.GET, "/login/**","/users/**", "/games/**", "/lores/**").hasRole("USER")
-//                    .antMatchers(HttpMethod.POST, "/usuaris/**", "/videojocs/**").hasRole("USER")
-//                    .antMatchers(HttpMethod.PUT, "/videojocs/**").hasRole("USER")
-//                    .antMatchers(HttpMethod.DELETE, "/videojocs/**").hasRole("ADMIN")
-//                    .antMatchers(HttpMethod.POST, "/videojocs/**").hasAnyRole("USER", "ADMIN")
+//                    .antMatchers(HttpMethod.POST, "/users/**", "/videojocs/**").hasRole("USER")
+//                    .antMatchers(HttpMethod.PUT, "/games/**").hasRole("USER")
+//                    .antMatchers(HttpMethod.DELETE, "/games/**").hasRole("ADMIN")
+//                    .antMatchers(HttpMethod.POST, "/games/**").hasAnyRole("USER", "ADMIN")
                 .anyRequest().authenticated().and()
                 .addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
     }
