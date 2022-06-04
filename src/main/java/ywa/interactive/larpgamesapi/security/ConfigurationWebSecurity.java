@@ -19,7 +19,7 @@ import ywa.interactive.larpgamesapi.security.JWT.MyAuthEntryPoint;
 @RequiredArgsConstructor
 public class ConfigurationWebSecurity extends WebSecurityConfigurerAdapter {
 
-//    private final MyAuthEntryPoint myAuthEntryPoint;
+    //    private final MyAuthEntryPoint myAuthEntryPoint;
     private final MyUserDetailsServise myUserDetailsServise;
     private final PasswordEncoder encrypted;
     private final JWTAuthorizationFilter jwtAuthorizationFilter;
@@ -29,13 +29,21 @@ public class ConfigurationWebSecurity extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(myUserDetailsServise).passwordEncoder(encrypted);
     }
 
-
-
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
+
+/*    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+                .inMemoryAuthentication()
+                .passwordEncoder(encrypted)
+                .withUser("User")
+                .password(encrypted.encode("SecretPassword"))
+                .roles("ADMIN");
+    }*/
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
