@@ -62,7 +62,7 @@ public class ConfigurationWebSecurity extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST,"/login").permitAll()
                 // .antMatchers(HttpMethod.GET,"/login").permitAll()
                 //.antMatchers(HttpMethod.GET, "/me/**").hasRole("ADMIN") //per fer proves del forbidden
-                .antMatchers(HttpMethod.GET, "/login/**","/usuaris/**", "/videojocs/**").hasRole("USER")
+                .antMatchers(HttpMethod.GET, "/login/**","/users/**", "/games/**", "/lores/**").hasRole("USER")
 //                    .antMatchers(HttpMethod.POST, "/usuaris/**", "/videojocs/**").hasRole("USER")
 //                    .antMatchers(HttpMethod.PUT, "/videojocs/**").hasRole("USER")
 //                    .antMatchers(HttpMethod.DELETE, "/videojocs/**").hasRole("ADMIN")
